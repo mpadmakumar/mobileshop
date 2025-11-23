@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Mobiles | Premium Mobile Shop</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6; 
+            border-radius: 4px;
+        }
+
+        /* Product Card Hover Effect */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-600"></i>
+                    <span class="font-bold text-2xl tracking-tighter text-gray-900">NextGen<span class="text-blue-600">Mobiles</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition">Home</a>
+                    <a href="#mobiles" class="text-gray-600 hover:text-blue-600 font-medium transition">Mobiles</a>
+                    <a href="#accessories" class="text-gray-600 hover:text-blue-600 font-medium transition">Accessories</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition">Contact</a>
+                    
+                    <!-- Cart Icon -->
+                    <div class="relative cursor-pointer hover:text-blue-600 transition">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </div>
+                    
+                    <button class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-500/30">
+                        Login
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                     <div class="relative cursor-pointer hover:text-blue-600 transition">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="mobile-cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
+                <a href="#mobiles" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Mobiles</a>
+                <a href="#accessories" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Accessories</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact Us</a>
+                <div class="pt-2">
+                    <button class="w-full bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Login / Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-br from-gray-900 to-blue-900 text-white relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-purple-500 opacity-20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left mb-10 lg:mb-0 animate-fade-in-up">
+                    <span class="bg-blue-600/30 text-blue-200 text-sm font-semibold px-4 py-1 rounded-full border border-blue-500/50">New Arrivals</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 leading-tight">
+                        Upgrade Your <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Digital Life</span>
+                    </h1>
+                    <p class="mt-4 text-gray-300 text-lg md:text-xl max-w-lg mx-auto lg:mx-0">
+                        Get the latest smartphones and premium accessories at the best market prices. Exclusive offers ending soon!
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#mobiles" class="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition shadow-lg shadow-blue-500/40 text-center">
+                            Shop Now
+                        </a>
+                        <a href="#contact" class="bg-transparent border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition text-center">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Image Placeholder -->
+                <div class="relative flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=600&auto=format&fit=crop" 
+                         alt="Latest Smartphone" 
+                         class="relative z-10 w-3/4 md:w-2/3 lg:w-full max-w-md drop-shadow-2xl hover:scale-105 transition duration-500 rounded-3xl border-4 border-gray-800">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-10 bg-white shadow-sm -mt-8 relative z-20 mx-4 md:mx-10 rounded-xl">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition">
+                <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                    <i class="fa-solid fa-truck-fast text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Fast Delivery</h3>
+                    <p class="text-sm text-gray-500">All over Tamil Nadu</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition">
+                <div class="bg-green-100 p-3 rounded-full text-green-600">
+                    <i class="fa-solid fa-tags text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Best Prices</h3>
+                    <p class="text-sm text-gray-500">Guaranteed lowest market rate</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition">
+                <div class="bg-purple-100 p-3 rounded-full text-purple-600">
+                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Official Warranty</h3>
+                    <p class="text-sm text-gray-500">1 Year Brand Warranty</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Mobiles Section -->
+    <section id="mobiles" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Trending <span class="text-blue-600">Smartphones</span></h2>
+            <p class="mt-2 text-gray-500">Explore the flagship killers and premium devices</p>
+        </div>
+
+        <!-- Filter Buttons (Visual Only) -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10">
+            <button class="px-5 py-2 rounded-full bg-blue-600 text-white font-medium shadow-md">All</button>
+            <button class="px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-500 transition">Apple</button>
+            <button class="px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-500 transition">Samsung</button>
+            <button class="px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-500 transition">OnePlus</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Product 1 -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden product-card group">
+                <div class="relative h-64 bg-gray-100 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop" alt="iPhone 15" class="h-full object-contain group-hover:scale-110 transition duration-500">
+                    <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">-10%</div>
+                </div>
+                <div class="p-5">
+                    <div class="text-sm text-gray-500 mb-1">Apple</div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">iPhone 15 Pro</h3>
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star-half-stroke text-yellow-400 text-sm"></i>
+                        <span class="text-xs text-gray-400 ml-1">(4.8)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-xl">₹1,34,900</span>
+                            <span class="text-gray-400 text-sm line-through block">₹1,49,900</span>
+                        </div>
+                        <button onclick="addToCart()" class="w-10 h-10 rounded-full bg-gray-100 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden product-card group">
+                <div class="relative h-64 bg-gray-100 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?q=80&w=600&auto=format&fit=crop" alt="Samsung S24" class="h-full object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-5">
+                    <div class="text-sm text-gray-500 mb-1">Samsung</div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Galaxy S24 Ultra</h3>
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="text-xs text-gray-400 ml-1">(5.0)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-bold text-xl">₹1,29,999</span>
+                        <button onclick="addToCart()" class="w-10 h-10 rounded-full bg-gray-100 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden product-card group">
+                <div class="relative h-64 bg-gray-100 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=600&auto=format&fit=crop" alt="OnePlus 12" class="h-full object-contain group-hover:scale-110 transition duration-500">
+                    <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">New</div>
+                </div>
+                <div class="p-5">
+                    <div class="text-sm text-gray-500 mb-1">OnePlus</div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">OnePlus 12</h3>
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-regular fa-star text-yellow-400 text-sm"></i>
+                        <span class="text-xs text-gray-400 ml-1">(4.2)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-bold text-xl">₹64,999</span>
+                        <button onclick="addToCart()" class="w-10 h-10 rounded-full bg-gray-100 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden product-card group">
+                <div class="relative h-64 bg-gray-100 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?q=80&w=600&auto=format&fit=crop" alt="Pixel 8" class="h-full object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-5">
+                    <div class="text-sm text-gray-500 mb-1">Google</div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Pixel 8 Pro</h3>
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star-half-stroke text-yellow-400 text-sm"></i>
+                        <span class="text-xs text-gray-400 ml-1">(4.6)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-bold text-xl">₹75,999</span>
+                        <button onclick="addToCart()" class="w-10 h-10 rounded-full bg-gray-100 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section id="accessories" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900">Essential <span class="gradient-text">Accessories</span></h2>
+                    <p class="mt-2 text-gray-500">Complete your ecosystem</p>
+                </div>
+                <a href="#" class="text-blue-600 font-medium hover:underline">View All <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Accessory 1 -->
+                <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1601593346740-925612772716?q=80&w=600&auto=format&fit=crop" alt="Case" class="w-full h-40 object-contain mb-4 rounded-lg">
+                    <h4 class="font-semibold text-gray-800">Premium Cases</h4>
+                    <p class="text-blue-600 text-sm font-bold mt-1">From ₹499</p>
+                </div>
+                 <!-- Accessory 2 -->
+                 <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="Headphones" class="w-full h-40 object-contain mb-4 rounded-lg">
+                    <h4 class="font-semibold text-gray-800">Headphones</h4>
+                    <p class="text-blue-600 text-sm font-bold mt-1">From ₹1,299</p>
+                </div>
+                 <!-- Accessory 3 -->
+                 <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?q=80&w=600&auto=format&fit=crop" alt="Charger" class="w-full h-40 object-contain mb-4 rounded-lg">
+                    <h4 class="font-semibold text-gray-800">Fast Chargers</h4>
+                    <p class="text-blue-600 text-sm font-bold mt-1">From ₹999</p>
+                </div>
+                 <!-- Accessory 4 -->
+                 <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Smartwatch" class="w-full h-40 object-contain mb-4 rounded-lg">
+                    <h4 class="font-semibold text-gray-800">Smart Watches</h4>
+                    <p class="text-blue-600 text-sm font-bold mt-1">From ₹2,999</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="py-10 px-4">
+        <div class="max-w-7xl mx-auto bg-gray-900 rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="relative z-10 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Exchange Mela!</h2>
+                <p class="text-gray-300 mb-6 text-lg">Exchange your old phone and get up to <br><span class="text-yellow-400 font-bold">₹10,000 OFF</span> on new purchase.</p>
+                <button class="bg-white text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">Check Value</button>
+            </div>
+            <div class="relative z-10">
+                <i class="fa-solid fa-mobile-retro text-9xl text-gray-700 opacity-50 absolute -top-10 -right-10 transform rotate-12"></i>
+                 <i class="fa-solid fa-arrows-rotate text-8xl text-yellow-400"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Visit Our Shop</h2>
+                    <p class="text-gray-600 mb-8">We provide the best after-sales support. Walk into our store to experience the devices live.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Address</h4>
+                                <p class="text-gray-500">123, Mobile Street, Near Bus Stand,<br>Madurai, Tamil Nadu - 625001.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Phone</h4>
+                                <p class="text-gray-500">+91 98765 43210</p>
+                            </div>
+                        </div>
+                         <div class="flex items-center gap-4">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-500">support@nextgenmobiles.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-pink-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-green-600 hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Simple Contact Form -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-xl font-bold mb-4">Send Enquiry</h3>
+                    <form onsubmit="event.preventDefault(); showToast('Message Sent Successfully!');" class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 transition" required>
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Mobile Number" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 transition" required>
+                        </div>
+                        <div>
+                            <textarea rows="4" placeholder="Message / Model Enquiry" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 transition" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2024 NextGen Mobiles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification (Hidden by default) -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-6 py-3 rounded-lg shadow-xl transform translate-y-20 transition-transform duration-300 z-50 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            // Change Icon
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close Mobile Menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuBtn.querySelector('i').classList.remove('fa-xmark');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Cart Functionality
+        let cartCount = 0;
+        const cartCountEl = document.getElementById('cart-count');
+        const mobileCartCountEl = document.getElementById('mobile-cart-count');
+
+        function addToCart() {
+            cartCount++;
+            cartCountEl.textContent = cartCount;
+            mobileCartCountEl.textContent = cartCount;
+            
+            // Animation for badge
+            cartCountEl.classList.add('scale-125');
+            setTimeout(() => cartCountEl.classList.remove('scale-125'), 200);
+
+            showToast("Item added to cart successfully!");
+        }
+
+        // Toast Notification Function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            
+            toast.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(150%)';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
